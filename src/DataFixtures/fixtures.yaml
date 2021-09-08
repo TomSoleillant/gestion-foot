@@ -1,0 +1,34 @@
+#Initializing the fixtures for the differents entities
+
+App\Entity\Team:
+  team_{1..15}:
+    name: 'FC <city()>'
+    division: 'Ligue <numberBetween(1,4)>'
+
+App\Entity\Player:
+  player_{1..450}:
+    firstname: '<firstname()>'
+    lastname: '<lastname()>'
+    birthdate: '12 Juillet 1998'
+    current_matchplayer_id: '<numberBetween(1, 50)>'
+    current_team_id: '<numberBetween(1, 15)>'
+
+App\Entity\Matchplayer:
+  matchplayer_{1..450}:
+    games_played: '<numberBetween(1, 38)>'
+    min_played: '<numberBetween(0, 3420)>'
+    goals: '<numberBetween(1, 50)>'
+    assists: '<numberBetween(1, 50)>'
+    year: "<year('now')>"
+    player_id: '<numberBetween(1, 450)>'
+    team_id: '<numberBetween(1, 15)>'
+
+App\Entity\User:
+  user_1:
+    email: 'admin@sportyma.fr'
+    password: '\$2y\$13\$uGVod3q3fEMKNlZjL0Ah/.0YQ3D0LxNAgY.XyIjktfc0CUqGvNING'
+    roles: ['ROLE_ADMIN']
+  user_2:
+    email: 'user@sportyma.fr'
+    password: '\$2y\$13\$/ubIw1FWVEbFW4Uo5hTzGOzpSuog7BbAKlP5i8SFH7Gf7hxpmhvWW'
+    roles: ['ROLE_USER']
