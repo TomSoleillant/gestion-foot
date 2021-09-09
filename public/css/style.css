@@ -23,7 +23,10 @@
   }
   
   /* debug */
-  
+  a {
+    text-decoration: none;
+  }
+
   .b1 {
     background-color: red;
   }
@@ -133,6 +136,10 @@
   .mr-50 {
     margin-right: 50px;
   }
+
+  .mt-10 {
+    margin-top: 10px;
+  }
   
   /* padding */
   
@@ -188,8 +195,8 @@
   }
   
   .btn-primary-stroke {
-    border: 1px solid var(--primary);
-    color: var(--primary);
+    border: 1px solid #009432;
+    color: #009432;
     background-color: white;
   }
   

@@ -20,7 +20,6 @@ App\Entity\Matchplayer:
     goals: '<numberBetween(1, 50)>'
     assists: '<numberBetween(1, 50)>'
     year: "<year('now')>"
-    player_id: '<numberBetween(1, 450)>'
     team_id: '<numberBetween(1, 15)>'
 
 App\Entity\User:

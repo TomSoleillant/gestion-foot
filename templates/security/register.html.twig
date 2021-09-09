@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <h2>Formulaire d'inscription</h2>
+
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+        <button class="btn btn-primary mr-5">S'inscrire</button>
+    {{ form_end(form) }}
+
+{% endblock %}

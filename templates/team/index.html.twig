@@ -4,4 +4,24 @@
 
 {% block body %}
 <h2>Liste des équipes</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom de l'équipe</th>
+                <th scope="col">Division</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for team in teams %}
+            <tr>
+                <th>{{ team.id }}</th>
+                <th><a href="#">{{ team.name }}</a></th>
+                <th>{{ team.division }}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}
