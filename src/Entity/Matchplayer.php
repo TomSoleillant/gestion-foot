@@ -45,12 +45,12 @@ class Matchplayer
     /**
      * @ORM\Column(type="integer")
      */
-    private $player_id;
+    private $team_id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Player::class, inversedBy="matchplayer")
      */
-    private $team_id;
+    private $player;
 
     public function getId(): ?int
     {
@@ -117,18 +117,6 @@ class Matchplayer
         return $this;
     }
 
-    public function getPlayerId(): ?int
-    {
-        return $this->player_id;
-    }
-
-    public function setPlayerId(int $player_id): self
-    {
-        $this->player_id = $player_id;
-
-        return $this;
-    }
-
     public function getTeamId(): ?int
     {
         return $this->team_id;
@@ -137,6 +125,18 @@ class Matchplayer
     public function setTeamId(int $team_id): self
     {
         $this->team_id = $team_id;
+
+        return $this;
+    }
+
+    public function getPlayer(): ?Player
+    {
+        return $this->player;
+    }
+
+    public function setPlayer(?Player $player): self
+    {
+        $this->player = $player;
 
         return $this;
     }
