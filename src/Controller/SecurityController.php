@@ -25,7 +25,7 @@ class SecurityController extends AbstractController
             $user->setPassword($hash);
             $em->persist($user);
             $em->flush();
-            return $this->redirectToRoute('team');
+            return $this->redirectToRoute('team_browse');
         }
 
 

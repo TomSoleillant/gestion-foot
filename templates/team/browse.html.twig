@@ -17,7 +17,7 @@
             {% for team in teams %}
             <tr>
                 <th>{{ team.id }}</th>
-                <th><a href="#">{{ team.name }}</a></th>
+                <th><a href="{{ path('team_read', {'id': team.id}) }}">{{ team.name }}</a></th>
                 <th>{{ team.division }}</th>
             </tr>
             {% endfor %}

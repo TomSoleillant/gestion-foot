@@ -10,13 +10,22 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TeamController extends AbstractController
 {
-    #[Route('/team', name: 'team')]
-    public function index(TeamRepository $teamRepository): Response
-    {
-        $teams = $teamRepository->findAll();
-        
-        return $this->render('team/index.html.twig', [
-            'teams' => $teams,
+    #[Route('/team', name: 'team_browse')]
+    public function browse(TeamRepository $teamRepository): Response
+    {        
+        return $this->render('team/browse.html.twig', [
+            'teams' => $teamRepository->findAll(),
         ]);
     }
+
+    /**
+     * @Route("/team/{id}", name="team_read", methods={"GET"}, requirements={"id" : "\d+"})
+     */
+    public function read(Team $team): Response
+    {
+        return $this->render('team/read.html.twig', [
+            'team' => $team,
+        ]);
+    }
+
 }
