@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Team;
+use App\Form\TeamType;
 use App\Repository\TeamRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -27,6 +29,29 @@ class TeamController extends AbstractController
         return $this->render('team/read.html.twig', [
             'team' => $team,
         ]);
+    }
+
+    #[Route('/team/add', name: 'team_add')]
+    public function add(Request $request)
+    {
+      $team = new Team();
+
+      $form = $this->createForm(TeamType::class, $team);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($team);
+          $em->flush();
+          $this->addFlash('success', 'L\'équipe' . $team->getName() . ' a bien été ajoutée');
+
+          return $this->redirectToRoute('team_browse');
+      }
+
+      return $this->render('team/add.html.twig', [
+          'form' => $form->createView(),
+      ]);
+    
     }
 
     #[Route('/team/delete/{id}', name: 'team_delete')]
