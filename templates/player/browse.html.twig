@@ -15,6 +15,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Date de naissance</th>
+                <th scope="col">Modifier</th>
                 <th scope="col">Supprimer</th>
             </tr>
         </thead>
@@ -26,6 +27,12 @@
                     <a href="{{ path('player_read', {'id': player.id}) }}">{{ player.firstname }} {{ player.lastname }}</a>
                 </td>
                 <td>{{ player.birthdate }}</td>
+                <td>
+                    <form action="{{ path('player_edit', {'id': player.id}) }}" method="PUT" >
+							<button class="btn btn-modify">Modifier</button>
+							
+					</form>
+                </td>
                 <td>
                     <form action="{{ path('player_delete', {'id': player.id}) }}" method="DELETE" >
 							<button class="btn btn-danger">Supprimer</button>

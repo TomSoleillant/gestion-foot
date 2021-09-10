@@ -43,12 +43,27 @@ class PlayerController extends AbstractController
           $em = $this->getDoctrine()->getManager();
           $em->persist($player);
           $em->flush();
-          $this->addFlash('success', 'Le joueur' . $player->getFirstname() . $player->getLastname(). ' a bien été ajouté');
 
           return $this->redirectToRoute('player_browse');
       }
 
       return $this->render('player/add.html.twig', [
+          'form' => $form->createView(),
+      ]);
+    }
+
+    #[Route('/player/edit/{id}', name: 'player_edit')]
+    public function edit(Request $request, Player $player)
+    {
+      $form = $this->createForm(PlayerType::class, $player);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+          $this->getDoctrine()->getManager()->flush();
+          return $this->redirectToRoute('player_browse');
+      }
+
+      return $this->render('player/edit.html.twig', [
           'form' => $form->createView(),
       ]);
     

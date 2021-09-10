@@ -207,6 +207,12 @@
     color: #009432;
     background-color: white;
   }
+
+  .btn-primary-modify {
+    border: 1px solid #919400;
+    color: #009432;
+    background-color: yellow;
+  }
   
   
   /* header */

@@ -43,12 +43,28 @@ class TeamController extends AbstractController
           $em = $this->getDoctrine()->getManager();
           $em->persist($team);
           $em->flush();
-          $this->addFlash('success', 'L\'équipe' . $team->getName() . ' a bien été ajoutée');
 
           return $this->redirectToRoute('team_browse');
       }
 
       return $this->render('team/add.html.twig', [
+          'form' => $form->createView(),
+      ]);
+    
+    }
+
+    #[Route('/team/edit/{id}', name: 'team_edit')]
+    public function edit(Request $request, Team $team)
+    {
+      $form = $this->createForm(TeamType::class, $team);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+          $this->getDoctrine()->getManager()->flush();
+          return $this->redirectToRoute('team_browse');
+      }
+
+      return $this->render('team/edit.html.twig', [
           'form' => $form->createView(),
       ]);
     
