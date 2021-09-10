@@ -17,7 +17,7 @@ class PlayerType extends AbstractType
             ->add('birthdate')
             //->add('current_matchplayer_id')
             //->add('current_team_id')
-            //->add('team')
+            ->add('team')
         ;
     }
 
