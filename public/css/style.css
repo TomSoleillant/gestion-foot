@@ -120,6 +120,10 @@
   .mr-5 {
     margin-right: 5px;
   }
+
+  .mr-10 {
+    margin-right: 10px;
+  }
   
   .m-10 {
     margin: 10px;
@@ -209,11 +213,11 @@
   
   
   .header-logo {
-    width: 100px;
+    width: 70px;
   }
   
   .header-logo img {
-    max-width: 100px;
+    max-width: 70px;
   }
   
   /* footer */
