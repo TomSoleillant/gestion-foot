@@ -18,6 +18,7 @@
                 <th scope="col">Buts</th>
                 <th scope="col">Passes décisives</th>
                 <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +31,11 @@
                 <td>{{ matchplayers.assists }}</td>
                 <td>
                     <button class="btn btn-primary mr-5"><a href="{{ path('matchplayer_edit', {"id": matchplayers.id}) }}">Modifier</a></button>
+                </td>
+                <td>
+                    <form action="{{ path('matchplayer_delete', {'id': matchplayers.id}) }}" method="DELETE" >
+						<button class="btn btn-danger">Supprimer</button>
+					</form>
                 </td>
             {% endfor %}
         </tbody>
