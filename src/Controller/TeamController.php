@@ -6,6 +6,7 @@ use App\Entity\Team;
 use App\Form\TeamType;
 use App\Repository\TeamRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TeamController extends AbstractController
 {
     #[Route('/team', name: 'team_browse')]
+    #[IsGranted('ROLE_USER')]
     public function browse(TeamRepository $teamRepository): Response
     {        
         return $this->render('team/browse.html.twig', [
@@ -24,6 +26,7 @@ class TeamController extends AbstractController
     /**
      * @Route("/team/{id}", name="team_read", methods={"GET"}, requirements={"id" : "\d+"})
      */
+    #[IsGranted('ROLE_USER')]
     public function read(Team $team): Response
     {
         return $this->render('team/read.html.twig', [
@@ -32,6 +35,7 @@ class TeamController extends AbstractController
     }
 
     #[Route('/team/add', name: 'team_add')]
+    #[IsGranted('ROLE_ADMIN')]
     public function add(Request $request)
     {
       $team = new Team();
@@ -54,6 +58,7 @@ class TeamController extends AbstractController
     }
 
     #[Route('/team/edit/{id}', name: 'team_edit')]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, Team $team)
     {
       $form = $this->createForm(TeamType::class, $team);
@@ -71,6 +76,7 @@ class TeamController extends AbstractController
     }
 
     #[Route('/team/delete/{id}', name: 'team_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(?int $id, TeamRepository $teamRepository)
     {
       $em = $this->getDoctrine()->getManager();

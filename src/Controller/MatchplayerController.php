@@ -7,6 +7,7 @@ use App\Form\MatchplayerType;
 use App\Repository\MatchplayerRepository;
 use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MatchplayerController extends AbstractController
 {
     #[Route('/matchplayer/add', name: 'matchplayer_add')]
+    #[IsGranted('ROLE_ADMIN')]
     public function add(Request $request)
     {
       $matchplayer = new Matchplayer();
@@ -38,6 +40,7 @@ class MatchplayerController extends AbstractController
     }
     
     #[Route('/matchplayer/edit/{id}', name: 'matchplayer_edit')]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, Matchplayer $matchplayer): Response
     {
         $form = $this->createForm(MatchplayerType::class, $matchplayer);
@@ -56,6 +59,7 @@ class MatchplayerController extends AbstractController
     }
 
     #[Route('/matchplayer/delete/{id}', name: 'matchplayer_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(EntityManagerInterface $em, ?int $id, MatchplayerRepository $matchplayerRepository)
     {
   
