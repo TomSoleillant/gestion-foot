@@ -5,6 +5,35 @@
 {% block body %}
 <h2>{{ player.firstname }} {{ player.lastname }}</h2>
 <p>Date de naissance : {{ player.birthdate }}</p>
+    <div>
+        <h3>Ses statistiques par saison</h3>
+        <button class="btn btn-primary mr-5"><a href="{{ path('matchplayer_add') }}">Ajouter des stats</a></button>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Année</th>
+                <th scope="col">Matchs joués</th>
+                <th scope="col">Minutes jouées</th>
+                <th scope="col">Buts</th>
+                <th scope="col">Passes décisives</th>
+                <th scope="col">Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for matchplayers in player.matchplayer %}
+            <tr>
+                <td>{{ matchplayers.year}}</td>
+                <td>{{ matchplayers.gamesPlayed }}</td>
+                <td>{{ matchplayers.minPlayed }}</td>
+                <td>{{ matchplayers.goals }}</td>
+                <td>{{ matchplayers.assists }}</td>
+                <td>
+                    <button class="btn btn-primary mr-5"><a href="{{ path('matchplayer_edit', {"id": matchplayers.id}) }}">Modifier</a></button>
+                </td>
+            {% endfor %}
+        </tbody>
+    </table>
 
 
 {% endblock %}
