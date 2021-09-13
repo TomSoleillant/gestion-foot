@@ -13,7 +13,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nom de l'équipe</th>
                 <th scope="col">Division</th>
                 {% if is_granted('ROLE_ADMIN') %}
@@ -25,7 +24,6 @@
         <tbody>
             {% for team in teams %}
             <tr>
-                <td>{{ team.id }}</td>
                 <td><a href="{{ path('team_read', {'id': team.id}) }}">{{ team.name }}</a></td>
                 <td>{{ team.division }}</td>
                 {% if is_granted('ROLE_ADMIN') %}

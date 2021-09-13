@@ -30,7 +30,7 @@
                 <td>{{ matchplayers.goals }}</td>
                 <td>{{ matchplayers.assists }}</td>
                 <td>
-                    <button class="btn btn-primary mr-5"><a href="{{ path('matchplayer_edit', {"id": matchplayers.id}) }}">Modifier</a></button>
+                    <button class="btn btn-warning mr-5"><a href="{{ path('matchplayer_edit', {"id": matchplayers.id}) }}">Modifier</a></button>
                 </td>
                 <td>
                     <form action="{{ path('matchplayer_delete', {'id': matchplayers.id}) }}" method="DELETE" >

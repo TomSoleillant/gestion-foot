@@ -8,7 +8,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nom</th>
                 <th scope="col">Date de naissance</th>
             </tr>
@@ -16,7 +15,6 @@
         <tbody>
             {% for player in team.players %}
             <tr>
-                <td>{{ player.id }}</td>
                 <td>
                 <a href="{{ path('player_read', {'id': player.id}) }}">{{ player.firstname }} {{ player.lastname }}</a>
                 </td>
