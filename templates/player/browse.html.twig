@@ -4,10 +4,11 @@
 
 {% block body %}
     <h2>Liste des joueurs</h2>
-
+    {% if is_granted('ROLE_ADMIN') %}
     <div>
         <button class="btn btn-primary mt-10 mb-10"><a href="{{ path('player_add') }}">Ajouter un joueur</a></button>
     </div>
+    {% endif %}
 
         <table class="table">
             <thead>
@@ -15,8 +16,10 @@
                     <th scope="col">#</th>
                     <th scope="col">Nom</th>
                     <th scope="col">Date de naissance</th>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <th scope="col">Modifier</th>
                     <th scope="col">Supprimer</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -27,9 +30,10 @@
                        <a href="{{ path('player_read', {'id': player.id}) }}">{{ player.firstname }} {{ player.lastname }}</a>
                     </td>
                     <td>{{ player.birthdate }}</td>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <td>
                       <form action="{{ path('player_edit', {'id': player.id}) }}" method="PUT" >
-							<button class="btn btn-modify">Modifier</button>	
+							<button class="btn btn-warning">Modifier</button>	
 					    </form>
                     </td>
                     <td>
@@ -37,6 +41,7 @@
 							<button class="btn btn-danger">Supprimer</button>
 					    </form>
                     </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </tbody>

@@ -4,10 +4,11 @@
 
 {% block body %}
 <h2>Liste des équipes</h2>
-
+{% if is_granted('ROLE_ADMIN') %}
 <div>
     <button class="btn btn-primary mt-10 mb-10"><a href="{{ path('team_add') }}">Ajouter une équipe</a></button>
 </div>
+{% endif %}
 
     <table class="table">
         <thead>
@@ -15,8 +16,10 @@
                 <th scope="col">#</th>
                 <th scope="col">Nom de l'équipe</th>
                 <th scope="col">Division</th>
+                {% if is_granted('ROLE_ADMIN') %}
                 <th scope="col">Modifier</th>
                 <th scope="col">Supprimer</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -25,9 +28,10 @@
                 <td>{{ team.id }}</td>
                 <td><a href="{{ path('team_read', {'id': team.id}) }}">{{ team.name }}</a></td>
                 <td>{{ team.division }}</td>
+                {% if is_granted('ROLE_ADMIN') %}
                 <td>
                     <form action="{{ path('team_edit', {'id': team.id}) }}" method="PUT" >
-							<button class="btn btn-modify">Modifier</button>
+							<button class="btn btn-warning">Modifier</button>
 							
 					</form>
                 </td>
@@ -37,6 +41,7 @@
 							
 					</form>
                 </td>
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
