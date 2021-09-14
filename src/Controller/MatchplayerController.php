@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Matchplayer;
 use App\Form\MatchplayerType;
 use App\Repository\MatchplayerRepository;
-use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
