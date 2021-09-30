@@ -4,8 +4,8 @@
 
 {% block body %}
 <div>
-    <h2>{{ player.firstname }} {{ player.lastname }}</h2>
-    <p>Date de naissance : {{ player.birthdate }}</p>
+    <h2>{{ firstname }} {{ app.player.lastname }}</h2>
+    <p>Date de naissance : {{ app.player.birthdate }}</p>
         {# {% if player.picture is defined %}
             <img id="player-img" src="{{ asset('images/{{ player.picture }}.jpg') }}"/>
         {% endif %} #}

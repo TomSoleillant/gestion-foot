@@ -12,6 +12,7 @@ class PlayerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $player = $builder->getData();
         $builder
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom'

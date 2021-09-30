@@ -11,9 +11,21 @@
       <button class="btn btn-primary mr-5"><a href="{{ path('player_browse') }}">Joueurs</a></button>
     </div>
 
+
+    {% if is_granted('ROLE_USER') %}
+    <div>
+      <a href="{{ path('current_user') }}">
+        <img src="{{ app.user.picture }}" class="avatar avatar-lg mr-10">
+      </a>
+      <small>
+        <a href="{{ path('app_logout') }}">Déconnexion</a>
+      </small>
+    </div>
+    {% else %}
     <div>
       <button class="btn btn-primary mr-5"><a href="{{ path('app_login') }}">Connexion</a></button>
       <button class="btn btn-primary-stroke mr-5"><a href="{{ path('register') }}">Inscription</a></button>
     </div>
+    {% endif %}
   </div>
 </header>
